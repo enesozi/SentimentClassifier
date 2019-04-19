@@ -1,19 +1,19 @@
-local embedding_dim = 256;
+local embedding_dim = 768;
 local hidden_dim = 128;
 local batch_size = 32;
 local num_epochs = 20;
 local patience = 5;
 local cuda_device = 0;
 local min_tokens = 3;
-local do_layer_norm = false;
-local dropout = 0.5;
+local allow_unmatched_keys = true;
 
 {
   "dataset_reader": {
     "type": "sst_tokens",
     "token_indexers": {
       "tokens": {
-        "type": "elmo_characters"
+        "type": "bert-pretrained",
+        "pretrained_model": "bert-base-uncased"
       }
     }
   },
@@ -29,12 +29,10 @@ local dropout = 0.5;
 
     "word_embeddings": {
       "tokens": {
-        "type": "elmo_token_embedder",
-        "options_file": "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x1024_128_2048cnn_1xhighway/elmo_2x1024_128_2048cnn_1xhighway_options.json",
-        "weight_file": "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x1024_128_2048cnn_1xhighway/elmo_2x1024_128_2048cnn_1xhighway_weights.hdf5",
-        "do_layer_norm": do_layer_norm,
-        "dropout": dropout
-      }
+        "type": "bert-pretrained",
+        "pretrained_model": "bert-base-uncased",
+      },
+      "allow_unmatched_keys": allow_unmatched_keys
     },
 
     "encoder": {

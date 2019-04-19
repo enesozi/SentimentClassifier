@@ -6,6 +6,11 @@ local embedding_dim = 128;
 local hidden_dim = 128;
 local learning_rate = 1e-4;
 local weight_decay = 1e-5;
+local batch_size = 32;
+local num_epochs = 20;
+local patience = 5;
+local cuda_device = 0;
+local min_tokens = 3;
 
 {
   "dataset_reader": {
@@ -15,7 +20,7 @@ local weight_decay = 1e-5;
   "validation_data_path": "data/trees/dev.txt",
   "vocabulary": {
         "min_count": {
-            "tokens": 3
+            "tokens": min_tokens
         }
   },
   // In order to use a model in configuration, it must
@@ -55,7 +60,7 @@ local weight_decay = 1e-5;
   },
   "iterator": {
     "type": "bucket",
-    "batch_size": 32,
+    "batch_size": batch_size,
     "sorting_keys": [["tokens", "num_tokens"]]
   },
   "trainer": {
@@ -64,9 +69,9 @@ local weight_decay = 1e-5;
             "lr": learning_rate,
             "weight_decay": weight_decay
     },
-    "num_epochs": 20,
-    "patience": 10,
-    "cuda_device": 0
+    "num_epochs": num_epochs,
+    "patience": patience,
+    "cuda_device": cuda_device
   }
 }
 
