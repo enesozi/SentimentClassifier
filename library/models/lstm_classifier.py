@@ -8,9 +8,6 @@ from allennlp.nn.util import get_text_field_mask
 from allennlp.training.metrics import CategoricalAccuracy, F1Measure
 from allennlp.modules.seq2vec_encoders import Seq2VecEncoder
 
-EMBEDDING_DIM = 128
-HIDDEN_DIM = 128
-
 # Model in AllenNLP represents a model that is trained.
 @Model.register("lstm_classifier")
 class LstmClassifier(Model):
