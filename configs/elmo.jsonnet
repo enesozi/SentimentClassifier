@@ -1,12 +1,12 @@
 local embedding_dim = 256;
-local hidden_dim = 128;
+local hidden_dim = 64;
 local batch_size = 32;
 local num_epochs = 20;
-local patience = 5;
+local patience = 3;
 local cuda_device = 0;
 local min_tokens = 3;
 local do_layer_norm = false;
-local dropout = 0.5;
+local dropout = 0.7;
 
 {
   "dataset_reader": {
