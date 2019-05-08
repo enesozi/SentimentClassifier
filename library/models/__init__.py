@@ -1,1 +1,2 @@
 from .lstm_classifier import LstmClassifier
+from .transformer_seq2vec_encoder import TransformerSeq2VecEncoder
