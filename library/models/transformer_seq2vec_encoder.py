@@ -2,6 +2,7 @@ import torch
 from allennlp.modules.seq2seq_encoders.stacked_self_attention import StackedSelfAttentionEncoder
 from allennlp.modules.seq2vec_encoders.seq2vec_encoder import Seq2VecEncoder
 from overrides import overrides
+from allennlp.nn.util import get_final_encoder_states
 
 
 @Seq2VecEncoder.register("seq2vec_encoder")
@@ -47,4 +48,4 @@ class TransformerSeq2VecEncoder(Seq2VecEncoder):
     @overrides
     def forward(self, inputs: torch.Tensor, mask: torch.Tensor):
         out = self.stacked_self_attention_encoder(inputs, mask)
-        return out.sum(1)
+        return get_final_encoder_states(out, mask)

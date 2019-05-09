@@ -1,5 +1,5 @@
-local batch_size = 32;
-local num_epochs = 27;
+local batch_size = 16;
+local num_epochs = 30;
 local patience = 10;
 local cuda_device = 0;
 local min_tokens = 3;
@@ -10,10 +10,10 @@ local dropout = 0.5;
 local seq_out_dim = 64;
 local seq_hidden_dim = 64;
 local seq_num_layers = 1;
-local seq_proj_dim = 64;
-local seq_feed_dim = 64;
-local seq_num_atten = 8;
-local dropout_prob = 0.1;
+local seq_proj_dim = 16;
+local seq_feed_dim = 16;
+local seq_num_atten = 1;
+local dropout_prob = 0.5;
 local residual_dropout_prob = 0.2;
 local attention_dropout_prob = 0.1;
 
